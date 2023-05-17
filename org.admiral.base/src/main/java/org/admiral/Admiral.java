@@ -1,5 +1,7 @@
 package org.admiral;
 
+import org.admiral.util.Ini;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.logging.Logger;
@@ -28,9 +30,12 @@ public class Admiral {
     static private ImageIcon s_imageIcon32;
     static private ImageIcon	s_imageIconLogo;
 
-    private static Logger logger = Logger.getLogger(Admiral.class.getName());
+    private static Logger logger;
 
     public static synchronized boolean startup(boolean isClient){
         // TODO: 16/5/2023
+        System.setProperty("suppressSwingDropSupport", "true");
+        Ini.setClient(isClient);
+        logger = Logger.getLogger(Admiral.class.getName());
     }
 }
